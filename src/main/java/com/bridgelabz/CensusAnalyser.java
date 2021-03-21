@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 public class CensusAnalyser
 {
-    public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException
+    public <CsvToBean> int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException
     {
         try
         {
@@ -19,7 +19,7 @@ public class CensusAnalyser
             csvToBeanBuilder.withType();
             csvToBeanBuilder.withIgnoreLeadingWhiteSpace(true);
             CsvToBean<IndiaCensusCSV> csvToBean = csvToBeanBuilder.build();
-            Iterator<IndiaCensusCSV> censusCSVIterator = csvToBean.iterator();
+            Iterator<IndiaCensusCSV> censusCSVIterator = csvToBean.iterator);
             int namOfEateries = 0;
             while (censusCSVIterator.hasNext())
             {
