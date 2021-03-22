@@ -46,5 +46,7 @@ import org.junit.rules.ExpectedException;
                     Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
                 }
             }
+
+
     }
 
