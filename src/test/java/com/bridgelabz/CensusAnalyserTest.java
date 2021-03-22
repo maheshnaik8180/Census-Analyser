@@ -14,6 +14,7 @@ import org.junit.rules.ExpectedException;
             try {
                 CensusAnalyser censusAnalyser = new CensusAnalyser();
                 int numOfRecords = censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+                System.out.println(numOfRecords);
                 Assert.assertEquals(29,numOfRecords);
             } catch (CensusAnalyserException e)
             {
