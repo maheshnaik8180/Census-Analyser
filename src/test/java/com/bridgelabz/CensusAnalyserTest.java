@@ -9,6 +9,7 @@ import org.junit.rules.ExpectedException;
         private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndiaStateCensusData.csv";
         private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.csv";
         private static final String WRONG_TYPE_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.txt";
+        private static final String INDIA_STATE_CSV_FILE_PATH = "./src/test/resources/IndiaStateCode.csv";
         @Test
         public void givenIndianCensusCSVFileReturnsCorrectRecords() {
             try {
@@ -35,7 +36,7 @@ import org.junit.rules.ExpectedException;
         }
 
         @Test
-        public void givenIndiaStateCSV_ShouldReturnExactCount()  {
+        public void given_wrong_file_type_should_ReturnExactCount()  {
 
                 try {
                     CensusAnalyser censusAnalyser = new CensusAnalyser();
@@ -47,6 +48,13 @@ import org.junit.rules.ExpectedException;
                 }
             }
 
-
+        @Test
+        public void givenIndiaStateCSV_ShouldReturnExactCount()  {
+            try {
+                CensusAnalyser censusAnalyser = new CensusAnalyser();
+                int numOfStateCode = censusAnalyser.loadIndianStateCode(INDIA_STATE_CSV_FILE_PATH);
+                Assert.assertEquals(37,numOfStateCode);
+            } catch (CensusAnalyserException e) {}
+        }
     }
 
