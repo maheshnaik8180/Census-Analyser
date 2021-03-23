@@ -118,6 +118,33 @@ import org.junit.rules.ExpectedException;
         }
 
 
+        @Test
+        public void givenIndiaStateData_WithWrongDelimiter_ShouldThrowException() {
+            try {
+                CensusAnalyser censusAnalyser = new CensusAnalyser();
+                ExpectedException exceptionRule = ExpectedException.none();
+                exceptionRule.expect(CensusAnalyserException.class);
+                censusAnalyser.loadIndianStateCode(WRONG_DELIMITER_CSV_FILE_PATH);
+            } catch (CensusAnalyserException e) {
+                Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
+            }
+        }
+
+
+        @Test
+        public void givenIndiaStateData_WithWrongHeader_ShouldThrowException() {
+            try {
+                CensusAnalyser censusAnalyser = new CensusAnalyser();
+                ExpectedException exceptionRule = ExpectedException.none();
+                exceptionRule.expect(CensusAnalyserException.class);
+                censusAnalyser.loadIndianStateCode(WRONG_HEADER_CSV_FILE_PATH);
+            } catch (CensusAnalyserException e) {
+                Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
+            }
+        }
+
+
+
 
 
 
