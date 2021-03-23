@@ -10,6 +10,7 @@ import org.junit.rules.ExpectedException;
         private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.csv";
         private static final String WRONG_TYPE_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.txt";
         private static final String INDIA_STATE_CSV_FILE_PATH = "./src/test/resources/IndiaStateCode.csv";
+        private static final String WRONG_HEADER_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusDataWrongHeader.csv";
         private static final String INDIA_STATE_WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCode.csv";
 
 
@@ -38,6 +39,19 @@ import org.junit.rules.ExpectedException;
                 Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
             }
         }
+
+        @Test
+        public void givenIndiaCensusData_WithWrongHeader_ShouldThrowException() {
+            try {
+                CensusAnalyser censusAnalyser = new CensusAnalyser();
+                ExpectedException exceptionRule = ExpectedException.none();
+                exceptionRule.expect(CensusAnalyserException.class);
+                censusAnalyser.loadIndiaCensusData(WRONG_HEADER_CSV_FILE_PATH);
+            } catch (CensusAnalyserException e) {
+                Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
+            }
+        }
+
 
         @Test
         public void given_wrong_file_type_should_ReturnExactCount()  {
@@ -73,6 +87,9 @@ import org.junit.rules.ExpectedException;
                 Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
             }
         }
+
+
+
 
 
         @Test
